@@ -1,46 +1,39 @@
-
 import java.io.*;
-import java.util.*;
+
 
 public class Main {
 
-    public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    public static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
+    public static BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+    public static BufferedWriter bw= new BufferedWriter(new OutputStreamWriter(System.out));
     public static int E;
     public static int S;
     public static int M;
 
+
     public static void main(String[] args) throws IOException {
 
-        String [] input =br.readLine().split(" ");
+        String [] input= br.readLine().split(" ");
+
         E=Integer.parseInt(input[0]);
         S=Integer.parseInt(input[1]);
         M=Integer.parseInt(input[2]);
-        int result=0;
-        for (int i = 0; result==0; i++) {
-            int temp=15*i+E;
-            for (int j = 0; result==0; j++) {
-                if(28*j+S>temp){
-                    break;
-                }
-                if(28*j+S==temp){
-                    for (int k = 0; ; k++) {
-                        if(19*k+M>temp){
-                            break;
-                        }
-                        if(19*k+M==temp){
-                            result=temp;
-                            break;
-                        }
-                    }
-                }
+
+        int rangeE=15;
+        int rangeS=28;  //제일 값이 크기 때문에 기준으로 사용
+        int rangeM=19;
+
+        for (int i = 0; ; i++) {
+            int checkS=i*28+S;
+            int checkE=(checkS%rangeE)==0 ? rangeE:checkS%rangeE;
+            int checkM=(checkS%rangeM)==0 ? rangeM:checkS%rangeM;
+
+
+            if(checkE==E && checkM==M){
+                bw.write(String.valueOf(checkS));
+                break;
             }
         }
-        bw.write(String.valueOf(result));
         bw.flush();
         bw.close();
     }
-
-
 }
