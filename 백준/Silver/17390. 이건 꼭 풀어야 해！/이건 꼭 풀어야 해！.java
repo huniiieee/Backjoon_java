@@ -15,11 +15,11 @@ public class Main {
         Q=Integer.parseInt(input[1]);
 
 
-        int [] sequence=new int[N];
+        short [] sequence=new short[N];
         int [] sum=new int[N+1];
         input=br.readLine().split(" ");
         for (int i = 0; i < N; i++) {
-            sequence[i]=Integer.parseInt(input[i]);
+            sequence[i]=Short.parseShort(input[i]);
         }
         Arrays.sort(sequence);
         sum[0]=0;
