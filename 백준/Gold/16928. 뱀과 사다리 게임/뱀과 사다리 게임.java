@@ -38,9 +38,7 @@ public class Main {
                 if(next>100)
                     break;
                 if(map.containsKey(next)){
-                    queue.offer(new int[]{map.get(next),cnt+1});
-                    visited[map.get(next)]=true;
-                    continue;
+                   next=map.get(next);
                 }
 
                 if(!visited[next]){
